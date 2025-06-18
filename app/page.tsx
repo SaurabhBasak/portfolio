@@ -8,7 +8,6 @@ import { ModeToggle } from "../components/ui/theme-toggle";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 
 export default function Home() {
-
   const intro = [
     {
       text: "Hi,",
@@ -23,35 +22,38 @@ export default function Home() {
     {
       text: "Basak.",
       className: "text-blue-500 dark:text-blue-500",
-    }
-  ]
+    },
+  ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div>
-        <div className="fixed top-5 right-5 z-50">
-          <ModeToggle />
-        </div>
         <NavigationMenu>
-          <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
-            <NavigationMenuList className="p-4 rounded-4xl border bg-background shadow-md">
+          <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-[500px] max-w-[90vw]">
+            <NavigationMenuList className="px-8 py-4 rounded-4xl border shadow-md shadow-blue-500 flex justify-around w-full">
               <NavigationMenuItem>
-                <NavigationMenuLink className="">About</NavigationMenuLink>
+                <NavigationMenuLink className="text-xl font-bold">About</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="">Experience</NavigationMenuLink>
+                <NavigationMenuLink className="text-xl font-bold">Experience</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="">Projects</NavigationMenuLink>
+                <NavigationMenuLink className="text-xl font-bold">Projects</NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </div>
         </NavigationMenu>
       </div>
-      <div className="flex flex-col items-center justify-center mt-20 p-4 max-w-2xl">
+
+      <div className="fixed bottom-5 right-5 z-50">
+        <ModeToggle />
+      </div>
+
+      <div className="flex flex-col items-center justify-center text-center mb-20">
         <TypewriterEffect words={intro} />
-        <p className="mt-4 text-lg">
-          I am a passionate developer with experience in building web applications.
+        <p className="mt-4 text-lg px-6">
+          I am a passionate developer with experience in building web
+          applications.
         </p>
       </div>
     </div>
