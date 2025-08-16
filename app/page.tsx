@@ -5,13 +5,14 @@ import {
   NavigationMenuList,
 } from "../components/ui/navigation-menu";
 import { ModeToggle } from "../components/ui/theme-toggle";
+import { Timeline } from "../components/ui/timeline";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
-import { intro } from "../lib/constants";
+import { intro, timelineData } from "../lib/constants";
 
 export default function Home() {
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center">
       <div>
         <NavigationMenu>
           <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-[500px] max-w-[90vw]">
@@ -40,14 +41,14 @@ export default function Home() {
         <ModeToggle />
       </div>
 
-      <div className="flex flex-col items-center justify-center text-center mb-20">
+      <div className="flex flex-col items-center justify-center text-center mt-40 sm:mt-56 md:mt-72">
         <TypewriterEffect words={intro} />
         <p className="mt-4 text-lg px-6">
           I am just a passionate developer who loves to create.
         </p>
       </div>
 
-      <div id="socials">
+      <div id="socials" className="mt-20 sm:mt-20 md:mt-32">
         <ul className="flex justify-center space-x-4">
           <li>
             <a
@@ -100,7 +101,7 @@ export default function Home() {
         </ul>
       </div>
 
-      <div className="absolute bottom-20">
+      <div className="mt-28">
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +116,10 @@ export default function Home() {
             <path d="m20.707 5.707-1.414-1.414L12 11.586 4.707 4.293 3.293 5.707 12 14.414l8.707-8.707z" />
           </svg>
         </a>
+      </div>
+
+      <div className="mt-10">
+        <Timeline data={timelineData} />
       </div>
     </div>
   );
