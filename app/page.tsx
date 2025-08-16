@@ -6,24 +6,9 @@ import {
 } from "../components/ui/navigation-menu";
 import { ModeToggle } from "../components/ui/theme-toggle";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
+import { intro } from "../lib/constants";
 
 export default function Home() {
-  const intro = [
-    {
-      text: "Hi,",
-    },
-    {
-      text: "I'm",
-    },
-    {
-      text: "Saurabh",
-      className: "text-blue-500 dark:text-blue-500",
-    },
-    {
-      text: "Basak.",
-      className: "text-blue-500 dark:text-blue-500",
-    },
-  ];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
