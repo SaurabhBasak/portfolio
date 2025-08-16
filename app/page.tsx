@@ -16,7 +16,7 @@ export default function Home() {
       <div>
         <NavigationMenu>
           <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-[500px] max-w-[90vw]">
-            <NavigationMenuList className="px-8 py-4 rounded-4xl border shadow-md shadow-blue-500 flex justify-around w-full">
+            <NavigationMenuList className="px-8 py-4 rounded-4xl border shadow-md shadow-blue-500 flex justify-around w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80">
               <NavigationMenuItem>
                 <NavigationMenuLink className="text-xl font-bold">
                   About
