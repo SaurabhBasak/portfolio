@@ -13,20 +13,14 @@ import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { intro, timelineData } from "../lib/constants";
 
 export default function Home() {
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const experienceRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-
-  const handleScrollToAbout = () => {
-    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  const sectionRefs = {
+    about: useRef<HTMLDivElement>(null),
+    experience: useRef<HTMLDivElement>(null),
+    projects: useRef<HTMLDivElement>(null),
   };
 
-  const handleScrollToExperience = () => {
-    experienceRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleScrollToProjects = () => {
-    projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+  const handleScrollTo = (section: keyof typeof sectionRefs) => {
+    sectionRefs[section].current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -40,7 +34,7 @@ export default function Home() {
                   className="text-xl font-bold cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleScrollToAbout();
+                    handleScrollTo("about");
                   }}
                 >
                   About
@@ -51,7 +45,7 @@ export default function Home() {
                   className="text-xl font-bold cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleScrollToExperience();
+                    handleScrollTo("experience")
                   }}
                 >
                   Experience
@@ -62,7 +56,7 @@ export default function Home() {
                   className="text-xl font-bold cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleScrollToProjects();
+                    handleScrollTo("projects");
                   }}
                 >
                   Projects
@@ -139,7 +133,7 @@ export default function Home() {
 
       <div className="mt-28">
         <button
-          onClick={handleScrollToAbout}
+          onClick={() => handleScrollTo("about")}
           className="flex flex-col items-center hover:cursor-pointer"
         >
           <svg
@@ -157,13 +151,13 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="mt-20 scroll-mt-16" id="about" ref={aboutRef}></div>
+      <div className="mt-20 scroll-mt-16" id="about" ref={sectionRefs.about}></div>
 
-      <div className="mt-20 scroll-mt-16" id="timeline" ref={experienceRef}>
+      <div className="mt-20 scroll-mt-16" id="timeline" ref={sectionRefs.experience}>
         <Timeline data={timelineData} />
       </div>
 
-      <div className="mt-20 scroll-mt-16" id="projects" ref={projectsRef}></div>
+      <div className="mt-20 scroll-mt-16" id="projects" ref={sectionRefs.projects}></div>
     </div>
   );
 }
