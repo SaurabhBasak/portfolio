@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -10,6 +13,21 @@ import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { intro, timelineData } from "../lib/constants";
 
 export default function Home() {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScrollToExperience = () => {
+    experienceRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -18,17 +36,35 @@ export default function Home() {
           <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-[500px] max-w-[90vw]">
             <NavigationMenuList className="px-8 py-4 rounded-4xl border shadow-md shadow-blue-500 flex justify-around w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80">
               <NavigationMenuItem>
-                <NavigationMenuLink className="text-xl font-bold">
+                <NavigationMenuLink
+                  className="text-xl font-bold cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToAbout();
+                  }}
+                >
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="text-xl font-bold">
+                <NavigationMenuLink
+                  className="text-xl font-bold cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToExperience();
+                  }}
+                >
                   Experience
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="text-xl font-bold">
+                <NavigationMenuLink
+                  className="text-xl font-bold cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToProjects();
+                  }}
+                >
                   Projects
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -102,7 +138,10 @@ export default function Home() {
       </div>
 
       <div className="mt-28">
-        <a>
+        <button
+          onClick={handleScrollToAbout}
+          className="flex flex-col items-center hover:cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -115,12 +154,16 @@ export default function Home() {
             <path d="m12 17.586-7.293-7.293-1.414 1.414L12 20.414l8.707-8.707-1.414-1.414L12 17.586z" />
             <path d="m20.707 5.707-1.414-1.414L12 11.586 4.707 4.293 3.293 5.707 12 14.414l8.707-8.707z" />
           </svg>
-        </a>
+        </button>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-20 scroll-mt-16" id="about" ref={aboutRef}></div>
+
+      <div className="mt-20 scroll-mt-16" id="timeline" ref={experienceRef}>
         <Timeline data={timelineData} />
       </div>
+
+      <div className="mt-20 scroll-mt-16" id="projects" ref={projectsRef}></div>
     </div>
   );
 }
