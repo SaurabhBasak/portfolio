@@ -157,7 +157,8 @@ export default function Home() {
         <Timeline data={timelineData} />
       </div>
 
-      <div className="mt-20 scroll-mt-16" id="projects" ref={sectionRefs.projects}></div>
+      <div className="mt-20 scroll-mt-16" id="projects" ref={sectionRefs.projects}>
+      </div>
     </div>
   );
 }
